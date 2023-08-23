@@ -6,3 +6,21 @@
 //
 
 import Foundation
+
+protocol JokeFetchable {
+    func fetchAJoke() async throws -> String
+}
+
+final class JokeFetcher: JokeFetchable {
+    private let networkService: NetworkServicing
+    
+    init(networkService: NetworkServicing) {
+        self.networkService = networkService
+    }
+    
+    func fetchAJoke() async throws -> String {
+        let networkRequest = GetNetWorkRequest(requestURL: API.jokeAPI, queryParams: nil)
+        let joke: String = try await networkService.execute(networkRequest: networkRequest)
+        return joke
+    }
+}
