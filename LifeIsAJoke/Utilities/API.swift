@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct API {
+    static let jokeAPI = "https://geek-jokes.sameerkumar.website/api"
+}

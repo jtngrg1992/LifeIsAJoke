@@ -13,7 +13,7 @@ protocol URLSessionInterface {
 }
 
 protocol JSONDecodable {
-    
+    func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable
 }
 
 extension JSONDecoder: JSONDecodable {
@@ -35,7 +35,7 @@ enum NetworkingError: Error {
 
 protocol NetworkServicing {
     var session: URLSessionInterface { get }
-    func execute<T: Decodable>(networkRequest: NetworkRequesting) async throws -> T?
+    func execute<T: Decodable>(networkRequest: NetworkRequesting) async throws -> T
 }
 
 /// Inject mock URLSession and JSONDecoder objects in order to manipulate NetworkService behaviour while writing unit tests
@@ -54,7 +54,7 @@ final class NetworkService: NetworkServicing {
         }
         
         let (data, _) = try await session.data(for: urlRequest)
-        let decodedData = try JSONDecoder().decode(T.self, from: data)
+        let decodedData = try jsonDecoder.decode(T.self, from: data)
         return decodedData
     }
 }
