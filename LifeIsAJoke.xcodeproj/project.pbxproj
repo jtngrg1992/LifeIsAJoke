@@ -17,6 +17,8 @@
 		13FDA8492A96798400734D96 /* JokesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8482A96798400734D96 /* JokesListViewController.swift */; };
 		13FDA84B2A967AD200734D96 /* JokesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA84A2A967AD200734D96 /* JokesListPresenter.swift */; };
 		13FDA84D2A967BEE00734D96 /* JokesListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA84C2A967BEE00734D96 /* JokesListBuilder.swift */; };
+		13FDA8522A96818300734D96 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8512A96818300734D96 /* NetworkService.swift */; };
+		13FDA8552A9681B700734D96 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8542A9681B700734D96 /* NetworkRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		13FDA8482A96798400734D96 /* JokesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListViewController.swift; sourceTree = "<group>"; };
 		13FDA84A2A967AD200734D96 /* JokesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListPresenter.swift; sourceTree = "<group>"; };
 		13FDA84C2A967BEE00734D96 /* JokesListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesListBuilder.swift; sourceTree = "<group>"; };
+		13FDA8512A96818300734D96 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		13FDA8542A9681B700734D96 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +105,7 @@
 		13FDA8172A9678B200734D96 /* LifeIsAJoke */ = {
 			isa = PBXGroup;
 			children = (
+				13FDA8502A96817600734D96 /* Services */,
 				13FDA84F2A967CD500734D96 /* Modules */,
 				13FDA8182A9678B200734D96 /* AppDelegate.swift */,
 				13FDA81A2A9678B200734D96 /* SceneDelegate.swift */,
@@ -144,6 +149,23 @@
 				13FDA84E2A967CC800734D96 /* JokesList */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		13FDA8502A96817600734D96 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				13FDA8532A9681A000734D96 /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		13FDA8532A9681A000734D96 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				13FDA8512A96818300734D96 /* NetworkService.swift */,
+				13FDA8542A9681B700734D96 /* NetworkRequest.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,10 +298,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13FDA8552A9681B700734D96 /* NetworkRequest.swift in Sources */,
 				13FDA8192A9678B200734D96 /* AppDelegate.swift in Sources */,
 				13FDA81B2A9678B200734D96 /* SceneDelegate.swift in Sources */,
 				13FDA8492A96798400734D96 /* JokesListViewController.swift in Sources */,
 				13FDA84D2A967BEE00734D96 /* JokesListBuilder.swift in Sources */,
+				13FDA8522A96818300734D96 /* NetworkService.swift in Sources */,
 				13FDA84B2A967AD200734D96 /* JokesListPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
