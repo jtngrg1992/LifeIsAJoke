@@ -11,6 +11,9 @@ protocol JokeFetchable {
     func fetchAJoke() async throws -> String
 }
 
+/// A very simple worker that utilizes network service to fetch a single joke from remote jokes API.
+/// Inject mocked networkService object while unit testing
+
 final class JokeFetcher: JokeFetchable {
     private let networkService: NetworkServicing
     
