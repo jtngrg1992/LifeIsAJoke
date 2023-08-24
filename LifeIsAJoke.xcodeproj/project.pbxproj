@@ -23,6 +23,9 @@
 		13FDA85A2A968AB900734D96 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8592A968AB900734D96 /* API.swift */; };
 		13FDA85C2A968BF200734D96 /* PeriodicJokeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA85B2A968BF200734D96 /* PeriodicJokeWorker.swift */; };
 		13FDA85E2A979F8200734D96 /* JokeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA85D2A979F8200734D96 /* JokeList.swift */; };
+		13FDA8832A97DAB400734D96 /* CoredataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8822A97DAB400734D96 /* CoredataManager.swift */; };
+		13FDA8862A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8842A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodeld */; };
+		13FDA8882A97E14F00734D96 /* JokesPersistentWorkerJokePersistentWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FDA8872A97E14F00734D96 /* JokesPersistentWorkerJokePersistentWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		13FDA8592A968AB900734D96 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		13FDA85B2A968BF200734D96 /* PeriodicJokeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicJokeWorker.swift; sourceTree = "<group>"; };
 		13FDA85D2A979F8200734D96 /* JokeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokeList.swift; sourceTree = "<group>"; };
+		13FDA8822A97DAB400734D96 /* CoredataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoredataManager.swift; sourceTree = "<group>"; };
+		13FDA8852A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LifeIsAJokeDM.xcdatamodel; sourceTree = "<group>"; };
+		13FDA8872A97E14F00734D96 /* JokesPersistentWorkerJokePersistentWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JokesPersistentWorkerJokePersistentWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,7 @@
 		13FDA80C2A9678B200734D96 = {
 			isa = PBXGroup;
 			children = (
+				13FDA8842A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodeld */,
 				13FDA8172A9678B200734D96 /* LifeIsAJoke */,
 				13FDA82E2A9678B300734D96 /* LifeIsAJokeTests */,
 				13FDA8382A9678B300734D96 /* LifeIsAJokeUITests */,
@@ -166,6 +173,8 @@
 				13FDA8532A9681A000734D96 /* NetworkService */,
 				13FDA8562A968A5400734D96 /* JokeFetcher.swift */,
 				13FDA85B2A968BF200734D96 /* PeriodicJokeWorker.swift */,
+				13FDA8822A97DAB400734D96 /* CoredataManager.swift */,
+				13FDA8872A97E14F00734D96 /* JokesPersistentWorkerJokePersistentWorker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -327,8 +336,11 @@
 				13FDA8522A96818300734D96 /* NetworkService.swift in Sources */,
 				13FDA8572A968A5400734D96 /* JokeFetcher.swift in Sources */,
 				13FDA85A2A968AB900734D96 /* API.swift in Sources */,
+				13FDA8882A97E14F00734D96 /* JokesPersistentWorkerJokePersistentWorker.swift in Sources */,
 				13FDA85E2A979F8200734D96 /* JokeList.swift in Sources */,
+				13FDA8832A97DAB400734D96 /* CoredataManager.swift in Sources */,
 				13FDA84B2A967AD200734D96 /* JokesListPresenter.swift in Sources */,
+				13FDA8862A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +668,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		13FDA8842A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				13FDA8852A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodel */,
+			);
+			currentVersion = 13FDA8852A97DADA00734D96 /* LifeIsAJokeDM.xcdatamodel */;
+			path = LifeIsAJokeDM.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 13FDA80D2A9678B200734D96 /* Project object */;
 }

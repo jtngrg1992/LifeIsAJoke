@@ -11,6 +11,9 @@ class JokeList<T> {
     private var jokesArr: [T]
     private let listSize: Int
     
+    var allJokes: [T] {
+        jokesArr
+    }
     
     var length: Int {
         jokesArr.count

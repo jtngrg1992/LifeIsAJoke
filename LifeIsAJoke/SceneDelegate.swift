@@ -10,7 +10,8 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    let networkService: NetworkServicing = NetworkService()
+    let coreDataManager: CoreDataManaging = CoreDataManager(modelName: "LifeIsAJokeDM")
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let jokesListBuilder: JokesListBuildable = JokesListBuilder(networkService: NetworkService())
+        let jokesListBuilder: JokesListBuildable = JokesListBuilder(networkService: networkService,
+                                                                    coreDataManager: coreDataManager)
         let jokesListModule = jokesListBuilder.buildModule(jokeUpdateInterval: 1.0, maxJokeCount: 10)
         window.rootViewController = jokesListModule
         self.window = window

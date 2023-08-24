@@ -17,6 +17,7 @@ protocol JokesListPresentable {
     
     func viewDidLoad()
     func getJoke(atIndex index: Int) -> String
+    func handleApplicationWillResignActive()
 }
 
 
@@ -45,8 +46,11 @@ final class JokesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
+        view.backgroundColor = .white
         presenter.viewDidLoad()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationWillBecomeInactive),
+                                               name: UIScene.willDeactivateNotification, object: nil)
     }
     
     override func loadView() {
@@ -55,12 +59,22 @@ final class JokesListViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             tableView.leadingAnchor.constraint(equalTo: v.leadingAnchor),
-            tableView.topAnchor.constraint(equalTo: v.topAnchor),
-            tableView.bottomAnchor.constraint(equalTo: v.bottomAnchor),
+            tableView.topAnchor.constraint(equalTo: v.safeAreaLayoutGuide.topAnchor),
+            tableView.bottomAnchor.constraint(equalTo: v.safeAreaLayoutGuide.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: v.trailingAnchor)
         ])
         
         view = v
+    }
+    
+    @objc func applicationWillBecomeInactive() {
+        presenter.handleApplicationWillResignActive()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIScene.willDeactivateNotification,
+                                                  object: nil)
     }
 }
 
@@ -83,6 +97,10 @@ extension JokesListViewController: JokesListInterface {
         if let visibleIndexPaths = tableView.indexPathsForVisibleRows?.dropLast(1) {
             tableView.reloadRows(at: Array(visibleIndexPaths), with: .automatic)
         }
+    }
+    
+    func refreshJokesList() {
+        tableView.reloadData()
     }
 }
 
