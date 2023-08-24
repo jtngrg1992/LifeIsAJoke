@@ -66,11 +66,23 @@ final class JokesListViewController: UIViewController {
 
 // MARK: Interface conformations
 extension JokesListViewController: JokesListInterface {
-    func displayNewJoke(newJoke: String) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+    func display(aJoke joke: String, atIndex index: Int, whileReplacingOldJoke: Bool) {
+        tableView.beginUpdates()
+        let indexPath = IndexPath(row: index, section: 0)
+        
+        if whileReplacingOldJoke {
+            tableView.deleteRows(at: [indexPath], with: .left)
         }
         
+        tableView.insertRows(at: [indexPath], with: .right)
+        tableView.endUpdates()
+        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+    }
+    
+    func refreshVisibleRows() {
+        if let visibleIndexPaths = tableView.indexPathsForVisibleRows?.dropLast(1) {
+            tableView.reloadRows(at: Array(visibleIndexPaths), with: .automatic)
+        }
     }
 }
 
@@ -87,6 +99,7 @@ extension JokesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: JOKE_CELL_REUSEID, for: indexPath)
         let joke = presenter.getJoke(atIndex: indexPath.row)
+        cell.textLabel?.numberOfLines = 0
         cell.textLabel?.text = joke
         return cell
     }

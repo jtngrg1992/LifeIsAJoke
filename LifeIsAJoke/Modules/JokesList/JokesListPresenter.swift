@@ -11,7 +11,8 @@ import Foundation
 protocol JokesListView: NSObject {
     var presenter: JokesListPresentable { get }
     
-    func displayNewJoke(newJoke: String)
+    func display(aJoke joke: String, atIndex index: Int, whileReplacingOldJoke: Bool)
+    func refreshVisibleRows()
 }
 
 final class JokesListPresenter {
@@ -48,8 +49,21 @@ extension JokesListPresenter: JokesListPresentable {
                 return
             }
             
+            let currentJokeCount = self.jokeCount
             self.jokes.pushJoke(newJoke)
-            self.view?.displayNewJoke(newJoke: newJoke)
+            let newJokeCount = self.jokeCount
+            
+            let shouldReplaceOldRow = currentJokeCount == newJokeCount
+            
+            DispatchQueue.main.async {
+                self.view?.display(aJoke: newJoke,
+                                   atIndex: self.jokeCount-1,
+                                   whileReplacingOldJoke: shouldReplaceOldRow)
+                
+                if shouldReplaceOldRow {
+                    self.view?.refreshVisibleRows()
+                }
+            }
         }
         
         periodicJokeWorker.startFetchingJokesPeriodically()
