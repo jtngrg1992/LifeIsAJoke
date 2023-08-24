@@ -19,8 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let jokesListBuilder: JokesListBuildable = JokesListBuilder()
-        let jokesListModule = jokesListBuilder.buildModule()
+        let jokesListBuilder: JokesListBuildable = JokesListBuilder(networkService: NetworkService())
+        let jokesListModule = jokesListBuilder.buildModule(jokeUpdateInterval: 1.0, maxJokeCount: 10)
         window.rootViewController = jokesListModule
         self.window = window
         window.makeKeyAndVisible()

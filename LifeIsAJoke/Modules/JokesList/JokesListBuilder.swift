@@ -8,12 +8,20 @@
 import Foundation
 
 protocol JokesListBuildable {
-    func buildModule() -> JokesListInterface
+    func buildModule(jokeUpdateInterval: TimeInterval, maxJokeCount: Int) -> JokesListInterface
 }
 
 final class JokesListBuilder: JokesListBuildable {
-    func buildModule() -> JokesListInterface {
-        var presenter: JokesListPresentable = JokesListPresenter()
+    private let networkService: NetworkServicing
+    
+    init(networkService: NetworkServicing) {
+        self.networkService = networkService
+    }
+    
+    func buildModule(jokeUpdateInterval: TimeInterval, maxJokeCount: Int) -> JokesListInterface {
+        let jokeFetcher = JokeFetcher(networkService: networkService)
+        let periodicJokeFetcher = PeriodicJokeWorker(jokeFetcher: jokeFetcher, fetchInterval: jokeUpdateInterval)
+        var presenter: JokesListPresentable = JokesListPresenter(periodicJokeWorker: periodicJokeFetcher, maxJokeCount: maxJokeCount)
         let view = JokesListViewController(presenter: presenter)
         presenter.view = view
         return view
